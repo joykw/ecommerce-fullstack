@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import data from '../data'
 
 function HomeScreen (props){
-    return <ul className="products">
+    return <div><ul className="products">
     {
         data.products.map(product =>
             <li>
@@ -26,5 +26,6 @@ function HomeScreen (props){
     }
 
 </ul>
+</div>
 }
 export default HomeScreen;
