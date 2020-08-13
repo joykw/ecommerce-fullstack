@@ -1,6 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import data from './data';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 import './App.css';
+import HomeScreen from './Screens/HomeScreen';
+import ProductScreen from './Screens/ProductScreen';
+
 
 function App() {
   const openMenu = () => {
@@ -10,13 +14,15 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open");
   }
   return (
+    <BrowserRouter>
     <div className="grid-container">
             <header className="header">
                <div className="brand">
                    <button onClick={openMenu}> 
                        &#9776;
                    </button>
-                   <a href="index.html">Kiara</a>
+                   <Link to="/">Kiara</Link>
+                   {/* <a href="index.html">Kiara</a> */}
                </div>
                <div className="header-links">
                 <a href="cart">Cart</a>
@@ -41,127 +47,17 @@ function App() {
             </aside>
             <main className="main">
                 <div className="content">
-                <ul className="products">
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product" />
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)
-                        </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product"/>
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product" />
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product" />
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product"/>
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product"/>
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product"/>
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product"/>
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product"/>
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/n1.jpeg" alt="product"/>
-                            <div className="product-name">
-                            <a href="product.html">Summer Dress</a>
-                        </div>
-                            <div className="product-brand">Zara</div>
-                            <div className="product-price">$100</div>
-                            <div className="product-rating">4.5 Stars(10 reviews)</div>
-                        </div>
-                    </li>
+                    <Route path="/products/:id" component={ProductScreen} />
+                    <Route path="/" exact={true} component={HomeScreen} />
                     
-                </ul>
+                
             </div>
             </main>
             <footer className="footer">
                 All Rights Reserved.
             </footer>
         </div>
+        </BrowserRouter>
   );
 }
 
