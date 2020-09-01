@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 
 function HomeScreen(props) {
 
     const [products, setProduct] = useState([]);
+    const productList = useSelector(state => state.productList);
+    const { products, loading, error } = productList;
+    const dispatch = useDispatch(); //replaces 'fetch' in useEffect hook
 
     //to fetch data from server:
     useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await axios.get("/api/products");
-            setProduct(data);
-        }
-        fetchData()
+        dispatch(listProducts());
+
         return () => {
             //
         };
