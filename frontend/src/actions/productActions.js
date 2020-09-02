@@ -1,8 +1,9 @@
-import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL } from '../constants'
+import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL } from '../constants/productConstants'
+import axios from 'axios';
 
-const { PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL } = require("../constants/productConstants")
 
-const listProduct = () => async (dispatch) => {
+
+const listProducts = () => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST });
         const { data } = await axios.get("api/products")
@@ -10,9 +11,11 @@ const listProduct = () => async (dispatch) => {
 
     }
     catch (error) {
-        dispatch({ type: PRODUCT_LIST_FAIL, payload: error.nessage })
+        dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message })
     }
 
 
 
 }
+
+export { listProducts }
